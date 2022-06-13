@@ -27,8 +27,8 @@ public class FrontControllerServletV1 extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("FrontControllerServletV1.service");
-        String requestURI = request.getRequestURI();
-        ControllerV1 controller = controllerMap.get(requestURI);
+        String requestURI = request.getRequestURI(); // Client의 URI를 받는다
+        ControllerV1 controller = controllerMap.get(requestURI); // 컨트롤러에서 꺼낸다 받은 URI를 꺼낸다.
         if (controller == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;

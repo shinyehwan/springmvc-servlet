@@ -19,22 +19,27 @@ public class MemberRepository {
 
     public static MemberRepository getInstance(){
         return instance;
-    }
+    } // 싱글톤 적용
 
     private MemberRepository(){
 
     }
 
+
+    // 여기는 간단하니깐 서비스 부분인 기능까지 구현한거야
+
+    // 아이디 저장
     public Member save(Member member){
         member.setId(++sequence);
         store.put(member.getId(), member);
         return member;
     }
-
+    // 회원 찾기
     public Member findById(Long id){
         return store.get(id);
     }
 
+    // 회원 모두 찾기
     public List<Member> findAll(){
         return new ArrayList<>(store.values());
     }

@@ -19,9 +19,11 @@ public class MemberSaveServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("MemberSaveServlet.service");
+        // MemberFormServlet에서 온거를 getparameter를 통해 값을 가져온 후에
         String username = request.getParameter("username");
         int age = Integer.parseInt(request.getParameter("age"));
 
+        // 비지니스 로직 들어가는거야 멤버를 만들어서 세이브를 한다.
         Member member = new Member(username, age);
         System.out.println("member = " + member);
         memberRepository.save(member);
