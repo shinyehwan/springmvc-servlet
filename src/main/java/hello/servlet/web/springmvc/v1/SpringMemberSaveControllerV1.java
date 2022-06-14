@@ -17,13 +17,16 @@ public class SpringMemberSaveControllerV1 {
     @RequestMapping("/springmvc/v1/members/save")
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response) {
 
+        // 값을 받아서
         String username = request.getParameter("username");
         int age = Integer.parseInt(request.getParameter("age"));
 
+        // 저장하고
         Member member = new Member(username, age);
         System.out.println("member = " + member);
         memberRepository.save(member);
 
+        // 모델 엔 뷰로 넘겨준다
         ModelAndView mv = new ModelAndView("save-result");
         mv.addObject("member", member);
         return mv;
